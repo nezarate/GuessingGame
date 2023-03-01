@@ -1,0 +1,5 @@
+/**
+ * worker
+ */
+public class Writer {
+}
