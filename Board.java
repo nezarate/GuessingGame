@@ -3,6 +3,8 @@ import java.awt.*;
 import java.util.List;
 
 public class Board extends JPanel {
+
+    public static String resourcePath = "resources/";
     public static List<String> pokemonImages = List.of(
             "Squirtle.png", "Wartortle.png", "Blastoise.png",
             "Abra.png", "Kadabra.png", "Alakazam.png",
@@ -15,6 +17,7 @@ public class Board extends JPanel {
             "Pidgey.png", "Pidgeot.png", "Pidgeotto.png",
             "Slowpoke.png", "Slowbro.png"
     );
+
     public Board(){
         // Setting 3x8 grid layout for images
         GridLayout grid = new GridLayout(3, 8);
@@ -22,7 +25,7 @@ public class Board extends JPanel {
         // Displaying images onto the grid layout
         for(int i = 0; i < 24; i++){
             Toolkit t = Toolkit.getDefaultToolkit();
-            Image image = t.getImage(pokemonImages.get(i));
+            Image image = t.getImage(resourcePath + pokemonImages.get(i));
             // resizes image to fit a 900 x 400 display
             image = image.getScaledInstance(100, 100, Image.SCALE_DEFAULT);
             Icon icon = new ImageIcon(image);
