@@ -4,14 +4,15 @@ public class Main extends JFrame{
     private ChatPanel chatpanel;
     private Board board;
     public Main(){
-        super("Whose that Pokemon????");
+        super("Who's that Pokemon????");
         chatpanel = new ChatPanel();
         board = new Board();
 
         // layout
-        setLayout(new GridLayout(0,2));
-        add(chatpanel);
+        setLayout(new GridLayout(2,0));
         add(board);
+        add(chatpanel);
+
     }
 
     public static void main(String[] args){
