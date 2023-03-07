@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * Board class to display the grid of guessable images inside a JLabel
  *
  */
-public class Board extends JPanel implements MouseListener {
+public class Board extends JPanel  {
 
     public static String resourcePath = "resources/";
     public static List<String> pokemonImages = List.of(
@@ -22,6 +23,7 @@ public class Board extends JPanel implements MouseListener {
             "Pidgey.png", "Pidgeot.png", "Pidgeotto.png",
             "Slowpoke.png", "Slowbro.png"
     );
+    private MouseListener mouseListener = new ControlHandler();
 
     public Board() {
         // Setting 3x8 grid layout for images
@@ -31,22 +33,11 @@ public class Board extends JPanel implements MouseListener {
         for (int i = 0; i < 24; i++) {
             PokemonLabel label = new PokemonLabel(pokemonImages.get(i));
             label.setImage(resourcePath + pokemonImages.get(i));
-            label.addMouseListener(this);
+
+            label.addMouseListener(mouseListener);
             this.add(label);
         }
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        ((PokemonLabel) e.getSource()).switchImageState();
-    }
 
-    @Override
-    public void mousePressed(MouseEvent e) {}
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-    @Override
-    public void mouseExited(MouseEvent e) {}
 }

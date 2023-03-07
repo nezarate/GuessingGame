@@ -1,3 +1,4 @@
+import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 public class ChatPanel extends JPanel implements Observer {
     private List<String> chatReceive;
     private JTextArea textReceive, textSend;
+    private ActionListener actionListener = new ControlHandler(this);
+
 
     /**
      * Set up the panel that contains 2 JTextAreas, one for sending and one for receiving chat messages, and a Run JButton
@@ -31,12 +34,14 @@ public class ChatPanel extends JPanel implements Observer {
 
         JButton buttonSend = new JButton("Send");
 
+        buttonSend.addActionListener(actionListener);
+
         this.add(scrollPaneReceive);
         this.add(textSend);
         this.add(buttonSend);
 
-
     }
+
 
     private void updateText(List<String> strings, JTextArea textArea) {
         textArea.removeAll();
@@ -65,5 +70,14 @@ public class ChatPanel extends JPanel implements Observer {
                 updateText(chatReceive, textReceive);
                 break;
         }
+    }
+
+
+    /**
+     * Gets a string that is the user's message they're sending
+     * @return The string that's in the sending textbox
+     */
+    public String getSendText() {
+        return textSend.getText();
     }
 }

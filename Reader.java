@@ -4,7 +4,7 @@
 import java.io.DataOutputStream;
 import java.net.Socket;
 
-public class Reader implements Runnable{
+public class Reader implements Runnable {
     private Socket s;
     private DataOutputStream d;
     public Reader(String address, int port){
@@ -21,7 +21,7 @@ public class Reader implements Runnable{
     @Override
     public void run(){
         while(true){
-            Repository.getIncoming();
+            Repository.getRepo().getIncoming();
             try{
                 Thread.sleep(1000);
             } catch (Exception e){
