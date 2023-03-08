@@ -22,6 +22,12 @@ public class Reader implements Runnable, Observer {
     public Reader(boolean host) {
         this.host = host;
     }
+
+    /**
+     * This method overrides the run() method of Runnable to allow multithreading of the Reader class. In the method
+     * sockets and data streams are created to allow communication of data between the players of the guessing
+     * game.
+     */
     @Override
     public void run() {
 
@@ -31,9 +37,7 @@ public class Reader implements Runnable, Observer {
         DataOutputStream output = null;
         String incoming;
 
-
         try {
-
             if (host) {
                 server_socket = new ServerSocket(6667);
                 System.out.println("Waiting for player to connect");
@@ -63,9 +67,7 @@ public class Reader implements Runnable, Observer {
             System.out.println(ex);
         }
 
-
     }
-
 
     @Override
     public void update(Observable o, Object arg) {

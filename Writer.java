@@ -23,6 +23,11 @@ public class Writer implements Runnable, Observer {
         this.host = host;
     }
 
+    /**
+     * This method overrides the run() method of Runnable to allow multithreading of the Writer class. In the method
+     * sockets and data streams are created to allow communication of data between the players of the guessing
+     * game.
+     */
     @Override
     public void run(){
 
@@ -66,12 +71,10 @@ public class Writer implements Runnable, Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-
         int data = (int)arg;
         if (data == Repository.OUTGOING_DATA) {
             flag = true;
         }
         System.out.println("Writer !! " + flag);
-
     }
 }
