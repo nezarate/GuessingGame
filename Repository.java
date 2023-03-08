@@ -10,6 +10,7 @@ import java.util.Observable;
  * @version GuessingGame v1.0
  */
 public class Repository extends Observable {
+    public static final int NO_DATA = 0;
     public static final int OUTGOING_DATA = 1;
     public static final int INCOMING_DATA = 2;
     private List<String> incomingData;
@@ -65,6 +66,13 @@ public class Repository extends Observable {
         return outgoingData;
     }
 
+    public String getRecentOutgoing() {
+        if (!outgoingData.isEmpty()) {
+            return outgoingData.get(outgoingData.size() - 1);
+        } else {
+            return null;
+        }
+    }
     /**
      * Getter for the repo's list of incoming data.
      * @return The repo's list of incoming data
@@ -72,7 +80,13 @@ public class Repository extends Observable {
     public List<String> getIncoming(){
         return incomingData;
     }
-
+    public String getRecentIncoming() {
+        if (!incomingData.isEmpty()) {
+            return incomingData.get(incomingData.size() - 1);
+        } else {
+            return null;
+        }
+    }
     /**
      * Clears the repo's list of outgoing data.
      * Notifies observers with flag.

@@ -25,9 +25,9 @@ public class ChatPanel extends JPanel implements Observer {
         this.setLayout(grid);
 
 
-        textSend = new JTextArea("You can type here to send messages to another user (disappear once sent?)");
+        textSend = new JTextArea("Type here to send messages to another user!");
 
-        textReceive = new JTextArea("Messages received will be shown here\nmessage 2\nmessage 3\nmessage4\nmessage5\nmessage6");
+        textReceive = new JTextArea("Messages received will be shown here.");
         textReceive.setEditable(false);
         JScrollPane scrollPaneReceive = new JScrollPane(textReceive);
         scrollPaneReceive.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -44,7 +44,7 @@ public class ChatPanel extends JPanel implements Observer {
 
 
     private void updateText(List<String> strings, JTextArea textArea) {
-        textArea.removeAll();
+        textArea.setText("");
         for (String s : strings) {
             textArea.append(s + "\n");
             textArea.update(textArea.getGraphics());
@@ -66,6 +66,7 @@ public class ChatPanel extends JPanel implements Observer {
                 break;
 
             case Repository.INCOMING_DATA:
+                System.out.println("ChatPanel receiving incoming data...");
                 chatReceive = Repository.getRepo().getIncoming();
                 updateText(chatReceive, textReceive);
                 break;
@@ -79,5 +80,8 @@ public class ChatPanel extends JPanel implements Observer {
      */
     public String getSendText() {
         return textSend.getText();
+    }
+    public void resetTextSend() {
+        textSend.setText("");
     }
 }

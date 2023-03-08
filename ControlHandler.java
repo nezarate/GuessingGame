@@ -35,8 +35,12 @@ public class ControlHandler implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         if (chatPanel != null) {
             String strSend = chatPanel.getSendText();
-            System.out.println(strSend);
-            System.out.println("TODO: add in sending to Writer");
+            if (!strSend.isBlank()) {
+                System.out.println(strSend);
+                System.out.println("Sending to Repository\n");
+                Repository.getRepo().addOutgoing(strSend);
+                chatPanel.resetTextSend();
+            }
         } else {
             System.out.println("ControlHandler not implemented correctly with ActionListener");
         }
