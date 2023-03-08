@@ -12,7 +12,6 @@ import java.util.ArrayList;
  * @version GuessingGame v1.0
  */
 public class ChatPanel extends JPanel implements Observer {
-    private List<String> chatReceive;
     private JTextArea textReceive, textSend;
     private ActionListener actionListener = new ControlHandler(this);
 
