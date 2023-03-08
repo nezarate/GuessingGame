@@ -1,13 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
 
-
+/**
+ * PokemonLabel class that encapsulates each Pokemon icon
+ * @author Jin Wu
+ */
 public class PokemonLabel extends JLabel{
     String name;
     Boolean grey;
 
     public static String resourcePath = "resources/";
 
+    // Constructor
     public PokemonLabel(String name){
         super();
         this.name = name;
@@ -18,6 +22,7 @@ public class PokemonLabel extends JLabel{
         return this.name;
     }
 
+    // Changes the Label image to the image pointed to via filename
     public void setImage(String filename){
         Toolkit t = Toolkit.getDefaultToolkit();
         Image image = t.getImage(filename);
@@ -28,6 +33,7 @@ public class PokemonLabel extends JLabel{
         this.setIcon(icon);
     }
 
+    // Switches from normal image to greyed out
     public void switchImageState(){
         if(!this.grey){
             this.setImage(resourcePath + "grey" + this.name);

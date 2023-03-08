@@ -6,8 +6,9 @@ import java.awt.event.MouseListener;
 import java.util.List;
 
 /**
- * Board class to display the grid of guessable images inside a JLabel
- *
+ * Board class to display the 3x8 grid of guessable images
+ * each image is a PokemonLabel
+ * @author Jin Wu
  */
 public class Board extends JPanel  {
 
@@ -33,7 +34,6 @@ public class Board extends JPanel  {
         for (int i = 0; i < 24; i++) {
             PokemonLabel label = new PokemonLabel(pokemonImages.get(i));
             label.setImage(resourcePath + pokemonImages.get(i));
-
             label.addMouseListener(mouseListener);
             this.add(label);
         }
