@@ -41,6 +41,12 @@ public class ChatPanel extends JPanel implements Observer {
 
     }
 
+    
+     /**
+     * This method updates the text area field with the current strings of messages
+     * @param strings, list of strings
+     * @param textArea, JTextArea object
+     */
 
     private void updateText(List<String> strings, JTextArea textArea) {
         textArea.setText("");
