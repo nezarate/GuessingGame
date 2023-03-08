@@ -4,40 +4,45 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Writer {
-    ServerSocket server_socket = null;
-    Socket server = null;
-    DataInputStream input = null;
+public class Writer implements Runnable, Observer {
 
-    DataOutputStream output = null;
+    boolean flag = false;
+    @Override
+    public void run(){
 
-    public Writer(int port){
+        ServerSocket server_socket;
+        Socket server;
+        DataInputStream input;
+        DataOutputStream output;
         try {
-            server_socket = new ServerSocket(port);
+            server_socket = new ServerSocket(6666);
+            System.out.println("Waiting for player to connect");
             server = server_socket.accept();
             input = new DataInputStream(server.getInputStream());
             output = new DataOutputStream(server.getOutputStream());
 
-            while(true){
-
+            while(flag){
                 String last = (Repository.getRepo().getIncoming().get(Repository.getRepo().getIncoming().size() - 1 ));
-
-                System.out.println(last);
-
-                if (last.equalsIgnoreCase("correct")){
-                    break;
-                }
+                output.writeUTF(last);
+                Thread.sleep(10000);
+                String msg = input.readUTF();
+                System.out.println(msg);
 
             }
-
             server.close();
             input.close();
             output.close();
-        } catch (IOException ex){
+        } catch (IOException | InterruptedException ex){
             System.out.println(ex);
         }
 
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        flag = true;
+    }
 }

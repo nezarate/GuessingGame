@@ -6,30 +6,35 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Reader implements Runnable{
-    Socket socket = null;
-    DataInputStream input = null;
 
-    DataOutputStream output = null;
+// needs to observe
+//
 
-    public Reader(int port){
+public class Reader implements Runnable, Observer {
+    boolean flag = false;
+    @Override
+    public void run(){
+
+        Socket socket = null;
+        DataInputStream input = null;
+        DataOutputStream output = null;
+
+
         try {
 
-            socket = new Socket("localhost" , port);
+            socket = new Socket("localhost" , 6666);
             input = new DataInputStream(socket.getInputStream());
             output = new DataOutputStream(socket.getOutputStream());
 
-            while(true){
+            while(flag){
 
+                System.out.println(input.readUTF());
+                Thread.sleep(10000);
                 String last = (Repository.getRepo().getOutgoing().get(Repository.getRepo().getOutgoing().size() - 1 ));
-
-                System.out.println(last);
-
-                if (last.equalsIgnoreCase("correct")){
-                    break;
-                }
-
+                output.writeUTF(last);
             }
 
             socket.close();
@@ -37,30 +42,14 @@ public class Reader implements Runnable{
             output.close();
         } catch (IOException ex){
             System.out.println(ex);
-        } finally {
-            try {
-                if (socket != null)
-                    socket.close();
-                if (input != null)
-                    input.close();
-                if (output != null)
-                    output.close();
-            } catch (IOException ex) {
-                System.out.println(ex);
-            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
+
 
     @Override
-    public void run(){
-        while(true){
-            Repository.getRepo().getOutgoing();
-            try{
-                Thread.sleep(1000);
-            } catch (Exception e){
-
-            }
-        }
+    public void update(Observable o, Object arg) {
+        flag = true;
     }
-
 }
