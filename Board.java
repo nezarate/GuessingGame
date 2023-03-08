@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Board class to display the 3x8 grid of guessable images
  * each image is a PokemonLabel
- * @author Jin Wu
+ * @author Jacob Balikov, Giovanni Librizzi, Nicholas Zarate, Jin Wu, Umair Pathan, Amogh Prajapat
  */
 
 public class Board extends JPanel  {

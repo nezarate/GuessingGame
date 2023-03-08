@@ -3,7 +3,7 @@ import java.awt.*;
 
 /**
  * PokemonLabel class that encapsulates each Pokemon icon
- * @author Jin Wu
+ * @author Jacob Balikov, Giovanni Librizzi, Nicholas Zarate, Jin Wu, Umair Pathan, Amogh Prajapat
  */
 public class PokemonLabel extends JLabel{
     String name;
