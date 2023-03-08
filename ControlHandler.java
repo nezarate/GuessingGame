@@ -5,7 +5,8 @@ import java.awt.event.MouseListener;
 
 /**
  * Interfaces with other objects and allows actions to be handled in a separate class (Control in MCV)
- * @author Giovanni Librizzi
+ * @author Jacob Balikov, Giovanni Librizzi, Nicholas Zarate, Jin Wu, Umair Pathan, Amogh Prajapat
+ * @version GuessingGame v1.0
  */
 public class ControlHandler implements ActionListener, MouseListener {
 

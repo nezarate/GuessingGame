@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 /**
  * This class represents the whole of our guessing game. Creates the layout
- * for our guessing game, sets up observors, and starts threads. Determines
+ * for our guessing game, sets up observers, and starts threads. Determines
  * whether you will be the host (server socket) or not (regular socket)
- * @author Giovanni Librizzi, Nicholas Zarate, Jin Wu, Jacob Balikov, Umair Dathan, Amogh Prajapat
+ * @author Giovanni Librizzi, Nicholas Zarate, Jin Wu, Jacob Balikov, Umair Pathan, Amogh Prajapat
  * @version GuessingGame v1.0
  */
 public class Main extends JFrame{
@@ -33,7 +33,7 @@ public class Main extends JFrame{
     /**
      * Main method, what we run to start our guessing game. Deals
      * with choosing a host along with setting up the window,
-     * observors, and threads.
+     * observers, and threads.
      * @param args Command line arguments
      */
     public static void main(String[] args){

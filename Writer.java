@@ -8,6 +8,11 @@ import java.net.Socket;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Writes data when an observer detects new outgoing data using a thread that's looping
+ * @author Jacob Balikov, Giovanni Librizzi, Nicholas Zarate, Jin Wu, Umair Pathan, Amogh Prajapat
+ * @version GuessingGame v1.0
+ */
 public class Writer implements Runnable, Observer {
 
     boolean flag = false;

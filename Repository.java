@@ -6,7 +6,7 @@ import java.util.Observable;
  * This class represents the data of our guessing game and is both
  * a singleton and an observable. Stores all incoming and outgoing
  * chat data. Notifies its observers when either of these change.
- * @author Jacob Balikov, Giovanni Librizzi, Nicholas Zarate, Jin Wu, Umair Dathan, Amogh Prajapat
+ * @author Jacob Balikov, Giovanni Librizzi, Nicholas Zarate, Jin Wu, Umair Pathan, Amogh Prajapat
  * @version GuessingGame v1.0
  */
 public class Repository extends Observable {

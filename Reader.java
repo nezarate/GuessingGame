@@ -10,9 +10,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 
-// needs to observe
-//
-
+/**
+ * Uses a thread and loops to read data continuously, then send it
+ * @author Jacob Balikov, Giovanni Librizzi, Nicholas Zarate, Jin Wu, Umair Pathan, Amogh Prajapat
+ * @version GuessingGame v1.0
+ */
 public class Reader implements Runnable, Observer {
     boolean flag = false;
     boolean run = true;

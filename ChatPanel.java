@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 /**
  * Creates a chat panel that can be used to communicate with another user
- *
- * @author Giovanni Librizzi
+ * @author Jacob Balikov, Giovanni Librizzi, Nicholas Zarate, Jin Wu, Umair Pathan, Amogh Prajapat
+ * @version GuessingGame v1.0
  */
 public class ChatPanel extends JPanel implements Observer {
     private List<String> chatReceive;
@@ -51,6 +51,9 @@ public class ChatPanel extends JPanel implements Observer {
         }
     }
 
+    /**
+     * Updates chat with the current received text
+     */
     public void updateChat() {
         updateText(Repository.getRepo().getChatLog(), textReceive);
     }
@@ -84,6 +87,10 @@ public class ChatPanel extends JPanel implements Observer {
     public String getSendText() {
         return textSend.getText();
     }
+
+    /**
+     * Resets the sending text jtextbox to be empty.
+     */
     public void resetTextSend() {
         textSend.setText("");
     }
