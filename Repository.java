@@ -15,6 +15,7 @@ public class Repository extends Observable {
     public static final int INCOMING_DATA = 2;
     private List<String> incomingData;
     private List<String> outgoingData;
+    private List<String> chatLog;
     private static Repository repo;
 
     /**
@@ -24,6 +25,7 @@ public class Repository extends Observable {
     private Repository(){
         incomingData = new ArrayList<>();
         outgoingData = new ArrayList<>();
+        chatLog = new ArrayList<>();
     }
 
     /**
@@ -43,6 +45,8 @@ public class Repository extends Observable {
      */
     public void addOutgoing(String s){
         outgoingData.add(s);
+        String newStr = "> " + s;
+        chatLog.add(newStr);
         setChanged();
         notifyObservers(OUTGOING_DATA);
     }
@@ -54,6 +58,7 @@ public class Repository extends Observable {
      */
     public void addIncoming(String s){
         incomingData.add(s);
+        chatLog.add(s);
         setChanged();
         notifyObservers(INCOMING_DATA);
     }
@@ -73,6 +78,10 @@ public class Repository extends Observable {
             return null;
         }
     }
+
+    public List<String> getChatLog() { return chatLog; }
+
+
     /**
      * Getter for the repo's list of incoming data.
      * @return The repo's list of incoming data

@@ -40,6 +40,7 @@ public class ControlHandler implements ActionListener, MouseListener {
                 System.out.println("Sending to Repository\n");
                 Repository.getRepo().addOutgoing(strSend);
                 chatPanel.resetTextSend();
+                chatPanel.updateChat();
             }
         } else {
             System.out.println("ControlHandler not implemented correctly with ActionListener");

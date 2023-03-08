@@ -27,7 +27,7 @@ public class ChatPanel extends JPanel implements Observer {
 
         textSend = new JTextArea("Type here to send messages to another user!");
 
-        textReceive = new JTextArea("Messages received will be shown here.");
+        textReceive = new JTextArea("Chat log will be shown here.");
         textReceive.setEditable(false);
         JScrollPane scrollPaneReceive = new JScrollPane(textReceive);
         scrollPaneReceive.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -51,6 +51,10 @@ public class ChatPanel extends JPanel implements Observer {
         }
     }
 
+    public void updateChat() {
+        updateText(Repository.getRepo().getChatLog(), textReceive);
+    }
+
     /**
      * Updates chat box via Repository observable
      * @param o     the observable object.
@@ -67,8 +71,7 @@ public class ChatPanel extends JPanel implements Observer {
 
             case Repository.INCOMING_DATA:
                 System.out.println("ChatPanel receiving incoming data...");
-                chatReceive = Repository.getRepo().getIncoming();
-                updateText(chatReceive, textReceive);
+                updateChat();
                 break;
         }
     }
