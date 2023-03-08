@@ -10,8 +10,9 @@ import java.util.List;
  * each image is a PokemonLabel
  * @author Jin Wu
  */
-public class Board extends JPanel  {
 
+public class Board extends JPanel  {
+    private MouseListener mouseListener = new ControlHandler();
     public static String resourcePath = "resources/";
     public static List<String> pokemonImages = List.of(
             "Squirtle.png", "Wartortle.png", "Blastoise.png",
@@ -24,8 +25,10 @@ public class Board extends JPanel  {
             "Pidgey.png", "Pidgeot.png", "Pidgeotto.png",
             "Slowpoke.png", "Slowbro.png"
     );
-    private MouseListener mouseListener = new ControlHandler();
 
+    /**
+     * Public constructor for the Board object
+     */
     public Board() {
         // Setting 3x8 grid layout for images
         GridLayout grid = new GridLayout(3, 8);

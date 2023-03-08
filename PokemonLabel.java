@@ -11,18 +11,28 @@ public class PokemonLabel extends JLabel{
 
     public static String resourcePath = "resources/";
 
-    // Constructor
+    /**
+     * constructor for pokemon label object
+     * @param name The name of the label
+     */
     public PokemonLabel(String name){
         super();
         this.name = name;
         grey = false;
     }
 
+    /**
+     * getter for the name of the PokemonLabel
+     * @return The name of the PokemonLabel
+     */
     public String getName(){
         return this.name;
     }
 
-    // Changes the Label image to the image pointed to via filename
+    /**
+     * Changes the Label image to the image pointed to via filename
+     * @param filename What image file to set the label to
+     */
     public void setImage(String filename){
         Toolkit t = Toolkit.getDefaultToolkit();
         Image image = t.getImage(filename);
@@ -33,7 +43,9 @@ public class PokemonLabel extends JLabel{
         this.setIcon(icon);
     }
 
-    // Switches from normal image to greyed out
+    /**
+     * Greys out an image or returns it to normal if already grey
+     */
     public void switchImageState(){
         if(!this.grey){
             this.setImage(resourcePath + "grey" + this.name);
