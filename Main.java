@@ -1,9 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
+/**
+ * This class represents the whole of our guessing game. Creates the layout
+ * for our guessing game, sets up observors, and starts threads. Determines
+ * whether you will be the host (server socket) or not (regular socket)
+ * @author Giovanni Librizzi, Nicholas Zarate, Jin Wu, Jacob Balikov, Umair Dathan, Amogh Prajapat
+ * @version GuessingGame v1.0
+ */
 public class Main extends JFrame{
 
     private ChatPanel chatpanel;
     private Board board;
+
+    /**
+     * Public constructor that instantiates globals
+     * and does some other setup.
+     */
     public Main(){
         super("Who's that Pokemon????");
         chatpanel = new ChatPanel();
@@ -18,6 +30,12 @@ public class Main extends JFrame{
 
     }
 
+    /**
+     * Main method, what we run to start our guessing game. Deals
+     * with choosing a host along with setting up the window,
+     * observors, and threads.
+     * @param args Command line arguments
+     */
     public static void main(String[] args){
         int response = JOptionPane.showConfirmDialog (null, "Are you the first player to run the game? If not please select no.","WARNING", JOptionPane.YES_NO_OPTION);
 
